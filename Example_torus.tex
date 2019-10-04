@@ -1,0 +1,41 @@
+% How to draw a torus in LaTeX
+% http://latexdraw.com
+% 03/10/2019, 18:20
+
+\documentclass{standalone}
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+
+\usepgfplotslibrary{colormaps}
+\pgfplotsset{
+    compat=newest,
+    colormap={mycolormap}{color=(lightgray) color=(white) color=(lightgray)}
+}
+
+\begin{document}
+    \begin{tikzpicture}
+        \begin{axis}[
+            axis equal image,
+            hide axis,
+            z buffer = sort,
+            view = {122}{30},
+            scale = 1.5
+        ]
+            \addplot3[
+                surf,
+                shader = faceted interp,
+                samples = 40,
+                samples y= 80,
+                domain = 0:2*pi,
+                domain y = 0:2*pi,
+                colormap name = mycolormap,
+                thin
+            ] (
+                {(3+sin(deg(\x)))*cos(deg(\y))},
+                {(3+sin(deg(\x)))*sin(deg(\y))},
+                {cos(deg(\x))}
+            );
+        \end{axis}
+    \end{tikzpicture}
+\end{document}
