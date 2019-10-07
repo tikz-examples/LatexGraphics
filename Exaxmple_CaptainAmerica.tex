@@ -1,0 +1,48 @@
+% How to draw a torus in LaTeX
+% http://latexdraw.com
+% 07/10/2019, 13:38
+
+\documentclass{standalone}
+
+\usepackage{tikz}
+\definecolor{metallicRed}{RGB}{135,22,20}
+\definecolor{metallicBlue}{RGB}{44, 88, 128}
+
+\begin{document}
+    \begin{tikzpicture}
+        \shade[
+            left color = metallicRed,
+            right color = metallicRed,
+            middle color = white,
+            shading angle = 135
+        ]   (0,0) circle (2);
+        
+        \shade[
+            left color = lightgray,
+            right color = lightgray,
+            middle color = white,
+            shading angle = 45
+        ]   (0,0) circle (1.6);
+        
+        \shade[
+            left color = metallicRed,
+            right color = metallicRed,
+            middle color = white,
+            shading angle = 135
+        ]   (0,0) circle (1.2);
+        
+        \shade[
+            left color = metallicBlue,
+            right color = metallicBlue,
+            middle color = white,
+            shading angle = 45
+        ]   (0,0) circle (0.8);
+        
+        \shade[
+            left color = lightgray,
+            right color = lightgray,
+            middle color = white,
+            shading angle = 135
+        ]   (18:0.8) -- (162:0.8) -- (-54:0.8) -- (90:0.8) -- (-126:0.8);
+    \end{tikzpicture}
+\end{document}
