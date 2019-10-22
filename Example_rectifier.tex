@@ -1,0 +1,24 @@
+% How to draw a single phase half wave rectifier in LaTeX using circuitikz
+% http://latexdraw.com
+% 22/10/2019, 14:49
+
+\documentclass{standalone}
+\usepackage[american]{circuitikz}
+
+\begin{document}
+		
+	\begin{circuitikz}[voltage dir = RP,draw=red,font=\small]
+		\ctikzset{bipoles/length=0.8cm}
+		\ctikzset{bipoles/diode/height=0.4, bipoles/diode/width=0.4,}
+		\draw (0,0)
+		to[sV,v=$u(t)$,i=$i_s$] (0,2) % The voltage source
+		to[D*] (3,2) % The diode
+		to[R=$R_L$,i>^=$i_L$] (3,0) % The resistor
+		to[short] (0,0);
+		\draw (3,2) 
+		to[short] (5,2)
+		to[C=$C$,i>^=$i_C$,v=$v_o(t)$] (5,0) % The capacitor
+		to[short] (3,0);
+	\end{circuitikz}
+		
+\end{document}
