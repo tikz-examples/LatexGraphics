@@ -1,0 +1,19 @@
+% How to draw a pie chart in LaTeX
+% http://latexdraw.com
+% 24/10/2019, 15:18
+\documentclass[dvipsnames]{standalone}
+
+\usepackage{pgf-pie}
+
+\begin{document}
+    \begin{tikzpicture}
+        \pie[] {
+            22.7/ Samsung,
+            17.6/ Huawei,
+            10.1/ Apple,
+            9.7/ Xiaomi,
+            8.9/ OPPO,
+            31.0/ Other
+        }
+    \end{tikzpicture}
+\end{document}
