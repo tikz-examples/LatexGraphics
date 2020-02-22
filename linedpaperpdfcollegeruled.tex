@@ -1,0 +1,16 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\begin{document}
+\pagestyle{empty}
+\begin{tikzpicture}[remember picture,overlay]
+
+\foreach \i in {1,2,...,27}{
+\draw[lightgray] ($(current page.north west)+(0,-\i)$) -- ($(current page.north east)+(0,-\i)$);}
+
+\draw [thick,red] ($(current page.north west)+(4,0)$) -- ($(current page.south west)+(4,0)$);
+
+\end{tikzpicture}
+
+\end{document}
