@@ -1,0 +1,15 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage[landscape]{geometry}
+
+\begin{document}
+\pagestyle{empty}
+\begin{tikzpicture}[remember picture,overlay]
+
+\foreach \i in {1,2,...,21}{
+\draw[lightgray] ($(current page.north west)+(0,-\i)$) -- ($(current page.north east)+(0,-\i)$);}
+
+\end{tikzpicture}
+
+\end{document}
