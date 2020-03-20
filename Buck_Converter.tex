@@ -1,0 +1,40 @@
+% Draw a dc-dc buck converter in LaTeX using CircuitikZ
+% latexdraw.com
+% 20/03/2020 at 01:44
+\documentclass[border=0.2cm]{standalone}
+\usepackage{circuitikz}
+
+\begin{document}
+
+\begin{circuitikz}[american]
+
+\ctikzset{
+resistors/scale=0.7,
+capacitors/scale=0.7,
+diodes/scale=0.7,
+inductors/coils=6
+ }
+
+\node[nigfete,rotate=90,label=S] (switch)at (1.7,3){} ;
+
+\draw (0,0) to[battery1,invert,l=$v_{in}$] ++(0,3) -- (switch.D);
+
+\draw (switch.E) -- ++(1,0) coordinate(a1);
+
+\draw (a1) to[cute inductor,l=L, i>^=$i_L$]
+++(3,0) coordinate(a2);
+
+\draw (a2) -- ++(1.5,0) to[R,l_=R,v^>=$\:v_o$,i>_=$i_o$] ++(0,-3) -- ++(-1.5,0) coordinate(a3);
+\node[ground] at (a3) {};
+
+\draw (a3) -- ++(-3,0) coordinate(a4);
+
+\draw (a4) -- (0,0);
+
+\draw (a3) to[C,invert,*-*,l=C,v<=$\:v_c$] (a2);
+
+\draw (a4) to[D*,l_= D,*-*] (a1);
+
+\end{circuitikz}
+
+\end{document}
