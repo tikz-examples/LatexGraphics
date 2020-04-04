@@ -1,0 +1,48 @@
+% The Easiest Way to Draw a BODE Plot in LaTeX!
+% Latexdraw.com
+% 04/04/2020, 23:41
+
+\documentclass{standalone}
+
+\usepackage{bodegraph}
+
+
+\begin{document}
+
+
+\begin{tikzpicture}[
+    gnuplot def/.append style={prefix={}},
+]
+
+ \tikzset{
+ semilog lines/.style={black},
+ semilog lines 2/.style={gray},
+ semilog half lines/.style={gray, dotted},
+ semilog label x/.style={below,font=\tiny},
+ semilog label y/.style={above,font=\tiny} }
+
+\begin{scope}[xscale=7/5, yscale=3/40]
+  \UnitedB
+
+
+ \semilog*{-2}{3}{-30}{10} 
+ \BodeGraph[black,samples=500]{-2:2.5}{\POAmpAsymp{1}{0.1}}
+
+  \BodeGraph[blue]{-2:2.5}{\POAmp{1}{0.1}}
+
+\end{scope}
+
+\begin{scope}[yshift=-3.5cm,xscale=7/5,yscale=3/90]
+ \UniteDegre
+\OrdBode{30}
+\semilog*{-2}{3}{-90}{0}
+\BodeGraph[black,samples=500]{-2:3}{\POArgAsymp{1}{0.1}}
+\BodeGraph[red]{-2:3}{\POArg{1}{0.1}}
+
+
+\end{scope}
+
+
+\end{tikzpicture}
+
+\end{document}
