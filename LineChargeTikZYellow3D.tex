@@ -1,0 +1,85 @@
+% Electric Field of Line Charge in TikZ
+% https://latexdraw.com
+% 12/12/2020, 07:41
+
+\documentclass[]{standalone}
+
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\tdplotsetmaincoords{80}{70}
+\usetikzlibrary{ decorations.markings}
+
+
+\begin{document}
+
+\begin{tikzpicture}
+[decoration={markings, 
+	mark= at position 0.7 with {\arrow[]{latex}}}
+] 
+
+% Solve rotation issue
+\path[] (-2,-3) rectangle (13.5,5);
+
+% Rotate the illustration
+\begin{scope}[transform canvas={rotate=10}]
+
+% Electric Field (arrows of back layer) 
+% 3D version
+   
+   \foreach \j in {1.25,5.75,9.75}
+{
+\draw[xshift=\j cm] (0,0) ellipse(0.2 and 0.5);
+    \begin{scope}[xshift=\j cm,tdplot_main_coords]
+
+        \foreach \angle in {0,45,...,180}
+{
+\tdplotsetcoord{P2}{2}{\angle}{-40}
+\tdplotsetcoord{P1}{0.5}{\angle}{-40}
+\draw[thick,postaction={decorate}] (P1) -- (P2);
+
+}
+    \end{scope}
+}
+
+
+% Cylindrical shape
+\draw [top color=Dandelion,
+			bottom color=Dandelion,
+			middle color=Goldenrod,
+			opacity=0.92] (0,-0.5) -- ++(12,0) 
+	arc(-90:90:0.2 and 0.5) -- ++(-12,0) 
+	arc(90:-90:0.2 and 0.5)--cycle;
+
+\draw[fill=cyan!10] (0,0) ellipse(0.2 and 0.5);
+
+
+
+% Electric charge
+\foreach \j in {1,3.5,7,11} 
+{
+	\node at (\j,0){$+$};
+}
+
+% Electric Field (arrows of front layer) 
+% 3D version
+
+\foreach \j in {1.25,5.75,9.75}
+{
+    \begin{scope}[xshift=\j cm,tdplot_main_coords]
+        \foreach \angle in {180,225,...,360}
+{
+\tdplotsetcoord{P2}{2}{\angle}{-40}
+\tdplotsetcoord{P1}{0.5}{\angle}{-40}
+\draw[thick,postaction={decorate}] (P1) -- (P2);
+
+}
+    \end{scope}
+}
+
+
+\end{scope} % end scope of the illustration rotation
+
+\end{tikzpicture}
+
+\end{document}
