@@ -1,0 +1,28 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% How to draw an arrow in the middle of a line in TikZ?
+% https://latexdraw.com
+% 12/12/2020, 09:15
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[border=2cm]{standalone}
+\usepackage{tikz}
+\begin{document}
+
+\begin{tikzpicture}
+
+\shade[ball color=yellow] (0,0) circle(0.4cm) node{\small \bf +};
+
+\foreach \angle in {0,30,...,350} {
+\begin{scope}[transform canvas={rotate=\angle}]
+
+\draw (0.6,0) -- ++(1.5,0)
+node[midway]{
+\tikz{\draw[latex-] (-0.2,0)--++(0.2,0);}
+};
+\end{scope}}
+
+\end{tikzpicture}
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
