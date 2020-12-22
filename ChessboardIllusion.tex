@@ -1,0 +1,30 @@
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% TikZ Line Styles: Chessboard Illusion as an example
+% https://latexdraw.com
+% 22/12/2020, 13:54
+
+
+\documentclass[tikz,border=0.2cm]{standalone}
+
+\begin{document}
+
+\begin{tikzpicture}
+
+\foreach \i\j in {0/0, 1/0.25,2/0.5,3/0.25,4/0,5/0.25,6/0.5,7/0.25}{
+
+% Draw rows
+	\draw[line width=1cm,
+				dash pattern=on 1cm off 1cm,
+				xshift=\j cm] (0,\i) -- ++(11.5,0);
+
+% Border of each row
+	\draw[black!60] (0,\i-0.5) rectangle ++(11.5,1);
+}
+
+\end{tikzpicture}
+
+\end{document}
