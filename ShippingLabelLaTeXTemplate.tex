@@ -1,0 +1,31 @@
+% Shipping Label 8163 Template in LaTeX
+% latexdraw.com
+% 11/01/2021, 23:27
+
+\documentclass{article}
+
+% Adjust page margins
+\usepackage[letterpaper,margin=0.1562in,top=0.6in]{geometry}
+
+% Package
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\begin{document}
+
+% Remove page numbers 
+\pagestyle{empty}
+
+\centering
+\begin{tikzpicture}[thick,font=\Large]
+
+% Two For loops
+\foreach \i in {0,4.1}{
+	\foreach \j in {0,-2,-4,-6,-8} {
+		\draw[rounded corners=0.5cm] (\i in,\j in) rectangle ++(4in,2in);
+	}
+}
+
+\end{tikzpicture}
+
+\end{document}
