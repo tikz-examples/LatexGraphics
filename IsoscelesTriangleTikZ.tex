@@ -1,0 +1,24 @@
+% TikZ shapes: Isosceles triangle
+% Latexdraw.com
+% 07/02/2021 at 19:28
+
+\documentclass[border=0.2cm]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric}
+
+\begin{document}
+
+\begin{tikzpicture}[thick,violet] 
+\foreach \i in {-30,-28,...,0}{
+
+\node[draw,
+    fill=violet!10,
+    isosceles triangle,
+    isosceles triangle apex angle=60,
+    minimum size=-2*\i mm, 
+    rotate=\i,inner sep =0pt] at (0,0){};
+}
+
+\end{tikzpicture}
+
+\end{document}
