@@ -1,0 +1,52 @@
+% Free Body Diagram of an Inclined Plane in TikZ
+% Latexdraw.com
+% 09/02/2021 at 10:28
+
+\documentclass[border=0.2cm]{standalone}
+
+% Required package
+\usepackage{tikz}
+
+\begin{document}
+
+\newcommand{\ang}{30}
+
+\begin{tikzpicture} [font = \small]
+
+% triangle:
+\draw [draw = orange, fill = orange!15] (0,0) coordinate (O) -- (\ang:6)
+	coordinate [pos=.45] (M) |- coordinate (B) (O);
+
+% angles:
+\draw [draw = orange] (O) ++(.8,0) arc (0:\ang:0.8) 
+	node [pos=.4, left] {$\theta$};
+\draw [draw = orange] (B) rectangle ++(-0.3,0.3);
+
+\begin{scope} [-latex,rotate=\ang]
+
+% Object (rectangle)
+\draw [fill = purple!30,
+	draw = purple!50] (M) rectangle ++ (1,.6);
+
+% Weight Force and its projections
+\draw [dashed] (M) ++ (.5,.3) coordinate (MM) -- ++ (0,-1.29)
+	node [very near end, right] {$mg\cos{\theta}$};
+
+\draw [dashed] (MM) -- ++ (-0.75,0) 
+	node [very near end, left] {$mg\sin{\theta}$};
+
+\draw (MM) -- ++ (-\ang-90:1.5)
+	node [very near end,below left ] {$mg$};
+
+% Normal Force
+\draw (MM) -- ++ (0,1.29)
+node [very near end, right] {$N$};
+
+% Frictional Force
+\draw (MM) -- ++ (0.75,0)
+	node [very near end, above] {$f$};
+
+\end{scope}
+
+\end{tikzpicture} 
+\end{document} 
