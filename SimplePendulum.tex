@@ -1,0 +1,31 @@
+% How to Draw an Ugly Pendulum in TikZ?
+% Latexdraw.com
+% 11/02/2021 at 10:00
+
+\documentclass[border = 0.2cm]{standalone}
+
+% Required package
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[font=\footnotesize]
+
+% Support
+\fill (-1.5,0) rectangle(1.5,0.1);
+
+% Bob's trajectory
+\draw[dashed] (-60:4) arc(-60:-120:4);
+
+% Rod + Bob
+\draw (0,0) -- (-60:4) node[fill,circle](m){};
+
+% Weight Force
+\draw[-latex] (m) -- node[right]{$\vec{P}$}++(0,-1) ;
+
+% Tension Force
+\draw [-latex] (m) -- node[right]{$\vec{T}$}(-60:3);
+
+\end{tikzpicture}
+
+\end{document}
