@@ -1,0 +1,84 @@
+% Drawing Neural Networks in TikZ: Short Guide
+% latexdraw.com
+% 21/02/2021 at 22:20
+
+\documentclass[border = 0.2cm]{standalone}
+
+% Required package
+\usepackage{tikz}
+
+\begin {document}
+
+% Input layer neurons'number
+\newcommand{\inputnum}{2} 
+% Hidden layer neurons'number
+\newcommand{\hiddennum}{5}  
+% Output layer neurons'number
+\newcommand{\outputnum}{2} 
+
+\begin{tikzpicture}
+
+% Input Layer
+\foreach \i in {1,...,\inputnum}
+{
+	\node[circle, 
+		minimum size = 6mm,
+		fill=orange!30] (Input-\i) at (0,-\i) {};
+}
+
+% Hidden Layer
+\foreach \i in {1,...,\hiddennum}
+{
+	\node[circle, 
+		minimum size = 6mm,
+		fill=teal!50,
+		yshift=(\hiddennum-\inputnum)*5 mm
+	] (Hidden-\i) at (2.5,-\i) {};
+}
+
+% Output Layer
+\foreach \i in {1,...,\outputnum}
+{
+	\node[circle, 
+		minimum size = 6mm,
+		fill=purple!50,
+		yshift=(\outputnum-\inputnum)*5 mm
+	] (Output-\i) at (5,-\i) {};
+}
+
+% Connect neurons In-Hidden
+\foreach \i in {1,...,\inputnum}
+{
+	\foreach \j in {1,...,\hiddennum}
+	{
+		\draw[->, shorten >=1pt] (Input-\i) -- (Hidden-\j);	
+	}
+}
+
+% Connect neurons Hidden-Out
+\foreach \i in {1,...,\hiddennum}
+{
+	\foreach \j in {1,...,\outputnum}
+	{
+		\draw[->, shorten >=1pt] (Hidden-\i) -- (Output-\j);
+	}
+}
+
+% Inputs
+\foreach \i in {1,...,\inputnum}
+{            
+	\draw[<-, shorten >=1pt] (Input-\i) -- ++(-1,0)
+		node[left]{$x_{\i}$};
+}
+
+% Outputs
+\foreach \i in {1,...,\outputnum}
+{            
+	\draw[->, shorten >=1pt] (Output-\i) -- ++(1,0)
+		node[right]{$y_{\i}$};
+}
+
+
+\end{tikzpicture}
+
+\end{document}
