@@ -1,0 +1,17 @@
+% How to Create Commutative Diagrams in TikZ?
+% latexdraw.com
+% 24/02/2021 at 21:48
+\documentclass [border = .2cm] {standalone}
+\usepackage{tikz}
+\usetikzlibrary{cd}
+
+\begin{document}
+
+\begin{tikzcd} [sep = .5 cm]
+& & & A \arrow [dl, dotted] \arrow [rr, "/" {marking}] \arrow [dd] & & B \arrow [dl, dashed, red, "w_2"] \arrow [dd] \arrow [rr] & & 0 \\
+& & C \arrow [rr, "w_1" {description, right}, crossing over] & & D \arrow [rr, crossing over] & & 0 \\
+& 0 \arrow [rr] & & A^{\prime} \arrow [dl] \arrow [rr] & & B^{\prime} \arrow [dl] \\
+0 \arrow [rr] & & C^{\prime} \arrow [rr] \arrow [from = uu, crossing over] & & D^{\prime} \arrow [from = uu, crossing over]\\
+\end{tikzcd}
+
+\end{document}
