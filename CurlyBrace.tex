@@ -1,0 +1,34 @@
+% How to Draw Curly Braces in TikZ
+% latexdraw.com
+% 25/02/2021 at 05:36
+
+\documentclass[border = .2cm]{standalone}
+\usepackage{fontawesome5}
+\usepackage{tikz}
+
+\usetikzlibrary{decorations.pathreplacing,calligraphy,backgrounds}
+
+\begin{document}
+
+\begin{tikzpicture}[ultra thick,pen colour={brown!30}]
+
+
+% Left brace
+\draw [decorate, 
+decoration = {calligraphic brace, raise = 2pt, amplitude = 4pt}] (0,0) --  (0,1);
+
+% Right brace
+\draw [white,decorate, decoration = {calligraphic brace, raise = 2pt, amplitude = 4pt,mirror}] (1.6,0) --  (1.6,1);
+
+% Text
+\node[color=white] at (0.8,0.5){I \textcolor{red!60}{\faIcon{heartbeat}}  Ti\textit{k}Z};
+
+% Background
+\begin{scope}[on background layer]
+\fill[black!60] (-0.5,-0.5) rectangle (2.1,1.5);
+\end{scope}
+
+
+\end{tikzpicture}
+
+\end{document}
